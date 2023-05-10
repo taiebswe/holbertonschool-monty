@@ -105,7 +105,7 @@ void pop(stack_t **stack, unsigned int line_number)
     /* Implementation of pop opcode */
     if (!*stack)
     {
-        fprintf(stderr, "L<line_number>: can't pop an empty stack\n", line_number);
+        fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
         EXIT_STATUS = EXIT_FAILURE;
         break;
     }

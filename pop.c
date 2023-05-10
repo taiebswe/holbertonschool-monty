@@ -1,5 +1,3 @@
-#include "monty.h"
-
 /**
  * pop - removes first element of stack
  * @stack: linked list
@@ -13,7 +11,7 @@ void pop(stack_t **stack, unsigned int line_number)
     /* Implementation of pop opcode */
     if (!*stack)
     {
-        printf("CAN'T POP AN EMPTY STACK\n");
+        fprintf(stderr, "L<line_number>: can't pop an empty stack\n", line_number);
         exit(EXIT_FAILURE);
     }
     topNode = (*stack);

@@ -31,7 +31,7 @@ void (*get_op_func(char *op))(stack_t **, unsigned int)
 
     int i = 0;
 
-    while (ops[i].opcode != NULL)
+    while (op && ops[i].opcode != NULL)
     {
         if (strcmp(op, ops[i].opcode) == 0)
             return ops[i].f;

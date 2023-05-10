@@ -17,10 +17,6 @@ FILE *read_file(char *path)
 
 void tokenize_line(char *line, char **op, char **value)
 {
-
-    // USE STRTOK HERE TO GET:
-    // - OPCODE
-    // - Value (which is the number to push into the stack)
     *op = strtok(strdup(line), " $\n\t");
     *value = strtok(NULL, " $\n\t");
 }

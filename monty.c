@@ -118,3 +118,8 @@ void pop(stack_t **stack, unsigned int line_number)
     free(topNode);
     /* Add logic to remove the top element from the stack */
 }
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+    return;
+}

@@ -7,14 +7,14 @@ int isnumber(char *data)
     if (data == NULL)
         return (0);
 
+    if (data[0] == '-')
+        i++;
+
     while (data[i])
     {
-        if (data[0] == '-')
-            i++;
 
         if (!isdigit(data[i]))
             return (0);
-
         i++;
     }
     return (1);

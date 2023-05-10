@@ -32,6 +32,7 @@ int main(int argc, char **argv)
         }
         if (do_operation)
             do_operation(&stack, line_count);
+        printf("%s\n", value);
         if (EXIT_STATUS != 0)
             break;
     }

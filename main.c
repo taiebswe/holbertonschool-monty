@@ -12,7 +12,6 @@ int main(int argc, char **argv)
     stack_t *stack = NULL;
     void (*do_operation)(stack_t **, unsigned int);
     (void)argc;
-    int error_status = 0;
 
     file = read_file(argc, argv);
 

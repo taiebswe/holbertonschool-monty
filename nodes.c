@@ -4,15 +4,15 @@ stack_t *create_node()
 {
     stack_t *new;
 
-    new = malloc(sizeof(stack_t) * 1);
-
-    if (new == NULL)
-        return (NULL);
-
     if (!isnumber(value))
     {
         return (NULL);
     }
+
+    new = malloc(sizeof(stack_t) * 1);
+
+    if (new == NULL)
+        return (NULL);
 
     new->n = atoi(value);
     new->next = NULL;
@@ -21,7 +21,7 @@ stack_t *create_node()
     return new;
 }
 
-void (*get_op_func(char *op))(stack_t **, unsigned int)
+void (*get_op_func(char *op, int line_count))(stack_t **, unsigned int)
 {
     instruction_t ops[] = {
         {"push", push},
@@ -37,6 +37,9 @@ void (*get_op_func(char *op))(stack_t **, unsigned int)
             return ops[i].f;
         i++;
     }
+
+    fprintf(stderr, "L%d: unknown instruction %s\n", line_count, op);
+    EXIT_STATUS = EXIT_FAILURE;
 
     return (NULL);
 }

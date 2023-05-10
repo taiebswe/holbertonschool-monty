@@ -37,11 +37,12 @@ typedef struct instruction_s
 } instruction_t;
 
 extern char *value;
+extern int EXIT_STATUS;
 
 FILE *read_file(int argc, char **argv);
 void _free_list(stack_t **head);
 void tokenize_line(char *line, char **op, char **value);
-void (*get_op_func(char *op))(stack_t **, unsigned int);
+void (*get_op_func(char *op, int line_count))(stack_t **, unsigned int);
 stack_t *create_node();
 int isnumber();
 

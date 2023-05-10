@@ -9,8 +9,12 @@ int isnumber(char *data)
 
     while (data[i])
     {
+        if (data[0] == '-')
+            i++;
+
         if (!isdigit(data[i]))
             return (0);
+
         i++;
     }
     return (1);
@@ -32,7 +36,8 @@ void push(stack_t **stack, unsigned int line_number)
     if (newNode == NULL)
     {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
+        EXIT_STATUS = EXIT_FAILURE;
+        return;
     }
 
     if (stack && *stack)

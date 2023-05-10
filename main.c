@@ -12,6 +12,7 @@ int main(int argc, char **argv)
     stack_t *stack = NULL;
     void (*do_operation)(stack_t **, unsigned int);
     (void)argc;
+    int error_status = 0;
 
     file = read_file(argc, argv);
 
@@ -23,16 +24,27 @@ int main(int argc, char **argv)
             continue;
 
         if (op)
+        {
             do_operation = get_op_func(op);
+            if (do_operation == NULL)
+            {
+                fprintf(stderr, "L%d: unknown instruction %s\n", line_count, op);
+                fclose(file);
+                _free_list(&stack);
+                free(line);
+                exit(EXIT_FAILURE);
+            }
+        }
         if (do_operation)
             do_operation(&stack, line_count);
     }
+
     fclose(file);
     _free_list(&stack);
     free(line);
+
     return (0);
 }
-
 void _free_list(stack_t **head)
 {
     stack_t *tmp;
@@ -42,5 +54,7 @@ void _free_list(stack_t **head)
         tmp = *head;
         (*head) = (*head)->next;
         free(tmp);
+        tmp = NULL;
     }
+    head = NULL;
 }

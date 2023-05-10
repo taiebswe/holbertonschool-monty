@@ -25,10 +25,10 @@ int main(int argc, char **argv)
             do_operation = get_op_func(op);
         if (do_operation)
         {
+            line_count++;
             // Adding condition to check if value is working with atoi
             do_operation(&stack, line_count);
         }
-        line_count++;
     }
 
     fclose(file);

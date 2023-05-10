@@ -32,6 +32,8 @@ int main(int argc, char **argv)
         }
         if (do_operation)
             do_operation(&stack, line_count);
+        if (EXIT_STATUS != 0)
+            break;
     }
 
     fclose(file);

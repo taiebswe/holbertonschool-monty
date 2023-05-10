@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
     FILE *file;
     ssize_t nread;
@@ -12,8 +12,9 @@ int main(void)
     int line_count = 0;
     stack_t *stack = NULL;
     void (*do_operation)(stack_t **, unsigned int);
+    (void)argc;
 
-    file = read_file("bytecodes/000.m");
+    file = read_file(argv[1]);
 
     while ((nread = getline(&line, &len, file)) != -1)
     {

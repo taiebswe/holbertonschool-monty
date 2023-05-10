@@ -8,7 +8,7 @@ FILE *read_file(char *path)
     file = fopen(path, "r");
     if (file == NULL)
     {
-        printf("ERROR OPENING THE FILE\n");
+        fprintf(stderr, "USAGE: monty file\n");
         exit(EXIT_FAILURE);
     }
 
@@ -23,13 +23,4 @@ void tokenize_line(char *line, char **op, char **value)
     // - Value (which is the number to push into the stack)
     *op = strtok(strdup(line), " $\n\t");
     *value = strtok(NULL, " $\n\t");
-    // if (value != NULL)
-    //     data = atoi(value);
-
-    // // FOR PUSH and OP operations with value
-    // if (op != NULL && value != NULL)
-    //     printf("OP: %s -> %d\n", op, data);
-    // // FOR PALL and OP operations without a value
-    // else if (op != NULL && value == NULL)
-    //     printf("OP: %s\n", op);
 }

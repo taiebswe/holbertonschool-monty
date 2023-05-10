@@ -85,8 +85,9 @@ void pint(stack_t **stack, unsigned int line_number)
     if (!*stack)
     {
         fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-        exit(EXIT_FAILURE);
+        EXIT_STATUS = EXIT_FAILURE;
+        return;
     }
-    printf("%d", (*stack)->n);
+    printf("%d\n", (*stack)->n);
     /* Print the value at the top of the stack */
 }

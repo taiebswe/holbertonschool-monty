@@ -26,6 +26,7 @@ void (*get_op_func(char *op, int line_count))(stack_t **, unsigned int)
     instruction_t ops[] = {
         {"push", push},
         {"pall", pall},
+        {"pint", pint},
         {0, NULL},
     };
 

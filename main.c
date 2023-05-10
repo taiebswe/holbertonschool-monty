@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 {
     FILE *file;
     ssize_t nread;
-    char *line;
+    char *line = NULL;
     size_t len = 0;
     char *op;
     unsigned int line_count = 0;
@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     void (*do_operation)(stack_t **, unsigned int);
     (void)argc;
 
-    file = read_file(argv[1]);
+    file = read_file(argv);
 
     while ((nread = getline(&line, &len, file)) != -1)
     {
@@ -25,14 +25,22 @@ int main(int argc, char **argv)
         if (op)
             do_operation = get_op_func(op);
         if (do_operation)
-        {
-            // Adding condition to check if value is working with atoi
             do_operation(&stack, line_count);
-        }
     }
-
     fclose(file);
+    _free_list(&stack);
     free(line);
-
     return (0);
+}
+
+void _free_list(stack_t **head)
+{
+    stack_t *tmp;
+
+    while (*head)
+    {
+        tmp = *head;
+        (*head) = (*head)->next;
+        free(tmp);
+    }
 }

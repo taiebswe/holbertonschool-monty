@@ -38,7 +38,8 @@ typedef struct instruction_s
 
 extern char *value;
 
-FILE *read_file(char *path);
+FILE *read_file(char **argv);
+void _free_list(stack_t **head);
 void tokenize_line(char *line, char **op, char **value);
 void (*get_op_func(char *op))(stack_t **, unsigned int);
 stack_t *create_node();

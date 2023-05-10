@@ -1,4 +1,5 @@
 #include "monty.h"
+char *value;
 
 int main(int argc, char **argv)
 {
@@ -7,7 +8,6 @@ int main(int argc, char **argv)
     char *line;
     size_t len = 0;
     char *op;
-    char *value;
     unsigned int line_count = 0;
     stack_t *stack = NULL;
     void (*do_operation)(stack_t **, unsigned int);

@@ -1,9 +1,11 @@
 #include "monty.h"
-char *value;
 
 int isnumber(char *data)
 {
     int i = 0;
+
+    if (data == NULL)
+        return (0);
 
     while (data[i])
     {
@@ -29,7 +31,7 @@ void push(stack_t **stack, unsigned int line_number)
 
     if (newNode == NULL)
     {
-        fprintf(2, "L%d: usage: push integer", line_number);
+        fprintf(stderr, "L%d: usage: push integer", line_number);
         exit(EXIT_FAILURE);
     }
 
@@ -79,7 +81,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
     if (!*stack)
     {
-        printf("CAN'T PINT, STACK EMPTY");
+        fprintf(stderr, "L%d: can't pint, stack empty", line_number);
         exit(EXIT_FAILURE);
     }
     printf("%d", (*stack)->n);

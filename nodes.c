@@ -1,7 +1,5 @@
 #include "monty.h"
 
-char *value;
-
 stack_t *create_node()
 {
     stack_t *new;

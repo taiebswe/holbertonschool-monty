@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     void (*do_operation)(stack_t **, unsigned int);
     (void)argc;
 
-    file = read_file(argv);
+    file = read_file(argc, argv);
 
     while ((nread = getline(&line, &len, file)) != -1)
     {

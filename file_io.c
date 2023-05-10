@@ -1,11 +1,11 @@
 
 #include "monty.h"
 
-FILE *read_file(char **argv)
+FILE *read_file(int argc, char **argv)
 {
     FILE *file;
 
-    if (argv[1] == NULL)
+    if (argc != 2)
     {
         fprintf(stderr, "USAGE: monty file\n");
         exit(EXIT_FAILURE);

@@ -8,8 +8,7 @@ int main(int argc, char **argv)
     size_t len = 0;
     char *op;
     char *value;
-    unsigned int data = 0;
-    int line_count = 0;
+    unsigned int line_count = 0;
     stack_t *stack = NULL;
     void (*do_operation)(stack_t **, unsigned int);
     (void)argc;
@@ -24,9 +23,7 @@ int main(int argc, char **argv)
         if (do_operation)
         {
             // Adding condition to check if value is working with atoi
-            if (value)
-                data = atoi(value);
-            do_operation(&stack, data);
+            do_operation(&stack, line_count);
         }
         line_count++;
     }

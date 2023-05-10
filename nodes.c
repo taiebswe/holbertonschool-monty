@@ -1,6 +1,8 @@
 #include "monty.h"
 
-stack_t *create_node(unsigned int number)
+char *value;
+
+stack_t *create_node()
 {
     stack_t *new;
 
@@ -9,7 +11,12 @@ stack_t *create_node(unsigned int number)
     if (new == NULL)
         return (NULL);
 
-    new->n = number;
+    if (!isnumber(value))
+    {
+        return (NULL);
+    }
+
+    new->n = atoi(value);
     new->next = NULL;
     new->prev = NULL;
 

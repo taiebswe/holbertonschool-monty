@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,10 +36,13 @@ typedef struct instruction_s
     void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern char *value;
+
 FILE *read_file(char *path);
 void tokenize_line(char *line, char **op, char **value);
 void (*get_op_func(char *op))(stack_t **, unsigned int);
-stack_t *create_node(unsigned int number);
+stack_t *create_node();
+int isnumber();
 
 // WE NEED TO IMPLEMENT
 void push(stack_t **stack, unsigned int line_number);

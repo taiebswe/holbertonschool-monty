@@ -1,5 +1,18 @@
 #include "monty.h"
+char *value;
 
+int isnumber(char *data)
+{
+    int i = 0;
+
+    while (data[i])
+    {
+        if (!isdigit(data[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
 /**
  * push - adding element to stack
  * @stack: linked list
@@ -7,17 +20,17 @@
  *
  * Return: Nothing.
  */
-void push(stack_t **stack, unsigned int number)
+void push(stack_t **stack, unsigned int line_number)
 {
     stack_t *newNode;
+    (void)line_number;
 
-    newNode = create_node(number);
+    newNode = create_node();
 
-    // TODO -> Consider maybe adding an error or something
     if (newNode == NULL)
     {
-        printf("WARNING: NEW NODE IS NULL\n");
-        return;
+        fprintf(2, "L%d: usage: push integer", line_number);
+        exit(EXIT_FAILURE);
     }
 
     if (stack && *stack)
